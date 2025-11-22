@@ -83,6 +83,7 @@ const UNITS: Record<QuantityKey, { base: string; units: Unit[] }> = {
       linearUnit("yd", "yd (yard)", 0.9144),
       linearUnit("mi", "mi (mile)", 1609.344),
       linearUnit("nmi", "nmi (hải lý)", 1852),
+      linearUnit("ly", "ly (năm ánh sáng)", 9.4607e15),
     ],
   },
 
