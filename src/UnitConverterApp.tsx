@@ -255,9 +255,34 @@ const UNITS: Record<QuantityKey, { base: string; units: Unit[] }> = {
 // Utilities
 const formatNumber = (v: number) => {
   if (!isFinite(v)) return "NaN";
-  return Number.parseFloat(String(v))
-    .toPrecision(12)
-    .replace(/(?:\.0+|0+)$/, "");
+
+  const abs = Math.abs(v);
+
+  // Format theo chuẩn Việt Nam
+  const vnFormat = (num: number, digits = 2) =>
+    num.toLocaleString("vi-VN", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: digits,
+    });
+
+  // Đơn vị lớn
+  if (abs >= 1e24) return vnFormat(v / 1e24) + " triệu tỉ tỉ";
+  if (abs >= 1e21) return vnFormat(v / 1e21) + " nghìn tỉ tỉ";
+  if (abs >= 1e18) return vnFormat(v / 1e18) + " tỉ tỉ";
+  if (abs >= 1e15) return vnFormat(v / 1e15) + " triệu tỉ";
+  if (abs >= 1e12) return vnFormat(v / 1e12) + " nghìn tỉ";
+  if (abs >= 1e9) return vnFormat(v / 1e9) + " tỉ";
+  if (abs >= 1e6) return vnFormat(v / 1e6) + " triệu";
+  if (abs >= 1e3) return vnFormat(v / 1e3) + " ngàn";
+
+  // Đơn vị nhỏ
+  if (abs > 0 && abs < 1e-9) return vnFormat(v * 1e9) + " phần tỉ";
+  if (abs >= 1e-9 && abs < 1e-6) return vnFormat(v * 1e9) + " phần tỉ";
+  if (abs >= 1e-6 && abs < 1e-3) return vnFormat(v * 1e6) + " phần triệu";
+  if (abs >= 1e-3 && abs < 1) return vnFormat(v * 1e3) + " phần nghìn";
+
+  // Số bình thường (format VN)
+  return vnFormat(v, 12);
 };
 
 // Converter component
