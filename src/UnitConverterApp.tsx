@@ -126,6 +126,17 @@ const UNITS: Record<QuantityKey, { base: string; units: Unit[] }> = {
       linearUnit("acre", "acre (mẫu Anh)", 4046.8564224),
       linearUnit("ft2", "ft² (foot vuông)", 0.09290304),
       linearUnit("yd2", "yd² (yard vuông)", 0.83612736),
+
+      // Việt Nam – Bắc Bộ
+      linearUnit("sao_bac", "sào Bắc Bộ (360 m²)", 360),
+      linearUnit("mau_bac", "mẫu Bắc Bộ (3600 m²)", 3600),
+
+      // Việt Nam – Trung Bộ
+      linearUnit("sao_trung", "sào Trung Bộ (500 m²)", 500),
+      linearUnit("mau_trung", "mẫu Trung Bộ (5000 m²)", 5000),
+
+      // Việt Nam – Nam Bộ (công đất)
+      linearUnit("cong", "công (miền Nam) ~ 1000 m²", 1000),
     ],
   },
 
