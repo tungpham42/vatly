@@ -367,9 +367,9 @@ export default function UnitConverterApp(): JSX.Element {
             lineHeight: "64px",
             textAlign: "center",
           }}
-          level={1}
+          level={2}
         >
-          Bộ chuyển đổi đơn vị Vật Lý
+          Đơn vị Vật Lý
         </Title>
       </Header>
       <Content style={{ padding: 24 }}>
